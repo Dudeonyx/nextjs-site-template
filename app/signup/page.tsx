@@ -16,7 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const signupSchema = z.object({
   username: z.string().min(1, 'Username is required'),
-  email: z.string().email('Invalid email address'),
+  email: z.email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
@@ -46,7 +46,7 @@ export default function SignupPage() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    {/* <FormLabel>Username</FormLabel> */}
                     <FormControl>
                       <Input {...field} autoComplete="username" placeholder="Username" />
                     </FormControl>
@@ -59,7 +59,7 @@ export default function SignupPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    {/* <FormLabel>Email</FormLabel> */}
                     <FormControl>
                       <Input {...field} autoComplete="email" placeholder="Email" type="email" />
                     </FormControl>
@@ -72,7 +72,7 @@ export default function SignupPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    {/* <FormLabel>Password</FormLabel> */}
                     <FormControl>
                       <Input
                         {...field}
