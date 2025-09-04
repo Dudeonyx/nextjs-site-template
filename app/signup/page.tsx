@@ -2,24 +2,28 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const signupSchema = z.object({
   username: z.string().min(1, 'Username is required'),
-  email: z.email('Invalid email address'),
+  email: z.string().email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
 type SignupFormInputs = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<SignupFormInputs>({
+  const form = useForm<SignupFormInputs>({
     resolver: zodResolver(signupSchema),
   });
 
@@ -35,45 +39,57 @@ export default function SignupPage() {
           <CardTitle>Sign Up</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <Input
-                {...register('username')}
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
                 name="username"
-                type="text"
-                placeholder="Username"
-                autoComplete="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                      <Input {...field} autoComplete="username" placeholder="Username" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-              {errors.username && (
-                <p className="text-sm text-red-500 mt-1">{errors.username.message}</p>
-              )}
-            </div>
-            <div>
-              <Input
-                {...register('email')}
+              <FormField
+                control={form.control}
                 name="email"
-                type="email"
-                placeholder="Email"
-                autoComplete="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input {...field} autoComplete="email" placeholder="Email" type="email" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-              {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
-            </div>
-            <div>
-              <Input
-                {...register('password')}
+              <FormField
+                control={form.control}
                 name="password"
-                type="password"
-                placeholder="Password"
-                autoComplete="new-password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        autoComplete="new-password"
+                        placeholder="Password"
+                        type="password"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-              {errors.password && (
-                <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>
-              )}
-            </div>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? 'Signing up...' : 'Sign Up'}
-            </Button>
-          </form>
+              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? 'Signing up...' : 'Sign Up'}
+              </Button>
+            </form>
+          </Form>
         </CardContent>
       </Card>
     </div>
