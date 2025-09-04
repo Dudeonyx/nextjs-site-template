@@ -6,7 +6,7 @@ export default function NavBar({ sample }: { sample?: boolean }) {
       <div className="text-lg font-bold">MyApp</div>
       <div className="space-x-4">
         {/* <Link href="#" className="hover:underline"> */}
-        <Link href="#" className="hover:underline">
+        <Link href="/" className="hover:underline">
           Home
         </Link>
         <Link href="signup" className="hover:underline">
