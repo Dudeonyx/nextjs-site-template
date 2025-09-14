@@ -25,6 +25,11 @@ type SignupFormInputs = z.infer<typeof signupSchema>;
 export default function SignupPage() {
   const form = useForm<SignupFormInputs>({
     resolver: zodResolver(signupSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
   });
 
   const onSubmit = async (data: SignupFormInputs) => {

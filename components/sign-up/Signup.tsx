@@ -16,7 +16,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 
-const formSchema = z.object({
+const signupFormSchema = z.object({
   username: z
     .string()
     .min(2, { message: 'Username must be at least 2 characters' })
@@ -28,11 +28,12 @@ const formSchema = z.object({
     .max(20, { message: 'Password cannot be more than 20 characters' }),
 });
 
+type SignupFormSchema = z.infer<typeof signupFormSchema>;
 const onSubmit = () => {};
 
 export function Signup() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<SignupFormSchema>({
+    resolver: zodResolver(signupFormSchema),
     defaultValues: {
       username: '',
       email: '',

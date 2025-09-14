@@ -15,6 +15,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Signup } from '@/components/sign-up/Signup';
+import Link from 'next/link';
+// import { Link } from 'lucide-react';
 
 const loginFormSchema = z.object({
   email: z.email('Invalid email address'),
@@ -23,7 +26,9 @@ const loginFormSchema = z.object({
 type LoginFormSchema = z.infer<typeof loginFormSchema>;
 
 async function onSubmit(data: LoginFormSchema) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000)).then(() => {
+    console.log(JSON.stringify(data));
+  });
 }
 export default function Login() {
   const form = useForm<LoginFormSchema>({
@@ -34,49 +39,71 @@ export default function Login() {
     },
   });
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Enter your login details to access your profile</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                name="email"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder="Your email address" type="email" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="password"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder="Your password" type="password" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <>
+      <div className="flex flex-col min-h-screen justify-center items-center">
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Login</CardTitle>
+            <CardDescription>Enter your login details to access your profile</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  name="email"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input {...field} type="email" placeholder="Email address" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  name="password"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="flex justify-between">
+                        <FormLabel>Password</FormLabel>
+                        <Link
+                          href="#"
+                          className="hover:underline text-sm font-medium transition hover:text-secondary-foreground"
+                        >
+                          Forgot your password?
+                        </Link>
+                      </div>
+                      <FormControl>
+                        <Input {...field} type="password" placeholder="" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                {form.formState.isSubmitting ? 'Logging in...' : 'Log In'}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-    </div>
+                <Button
+                  className="w-full"
+                  type="submit"
+                  //   variant={'outline'}
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? 'Logging in' : 'Log In'}
+                </Button>
+                <p className="text-sm font-medium">
+                  Don't have an account? goto{' '}
+                  <Link href="signup" className="underline">
+                    sign up
+                  </Link>
+                </p>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </div>
+      {/* <Signup /> */}
+    </>
   );
 }
