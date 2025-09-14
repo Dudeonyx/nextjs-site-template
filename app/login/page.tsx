@@ -93,7 +93,7 @@ export default function Login() {
                   {form.formState.isSubmitting ? 'Logging in' : 'Log In'}
                 </Button>
                 <p className="text-sm font-medium">
-                  Don&apos;t have an account? goto{' '}
+                  Don't have an account? goto{' '}
                   <Link href="signup" className="underline">
                     sign up
                   </Link>
