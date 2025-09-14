@@ -6,12 +6,13 @@ export default function Home() {
   return (
     <div className="relative font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="  flex flex-col gap-[32px] row-start-2 items-center sm:items-start ">
+        <div className="h-full w-full inset-0 absolute backdrop-blur-sm -z-10" />
         <Image
           src="bg.jpg"
           alt="Background"
           fill
-          style={{ objectFit: 'cover', zIndex: -1 }}
-          className="absolute inset-0 -z-10"
+          style={{ objectFit: 'cover' }}
+          className="absolute inset-0 -z-20"
         />
         <h2 className="text-lg text-center sm:text-left">Looking for reliable services?</h2>
         <h1 className="font-bold text-5xl">Welcome to Vicki&apos;s Digital Emporium!</h1>
