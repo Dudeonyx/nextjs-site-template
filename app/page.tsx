@@ -14,7 +14,7 @@ export default function Home() {
           className="absolute inset-0 -z-10"
         />
         <h2 className="text-lg text-center sm:text-left">Looking for reliable services?</h2>
-        <h1 className="font-bold text-5xl">Welcome to Vicki's Digital Emporium!</h1>
+        <h1 className="font-bold text-5xl">Welcome to Vicki&apos;s Digital Emporium!</h1>
         <h2 className="text-lg text-center sm:text-left">Your one-stop digital shop</h2>
         {/* <Signup />/ */}
       </main>
