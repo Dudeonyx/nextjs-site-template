@@ -9,7 +9,6 @@ export default function Home() {
         <Image
           src="bg.jpg"
           alt="Background"
-          fill
           style={{ objectFit: 'cover', zIndex: -1 }}
           className="absolute inset-0 -z-10"
         />
