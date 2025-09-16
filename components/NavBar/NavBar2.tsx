@@ -18,6 +18,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+import Image from 'next/image';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -49,14 +50,13 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="relative flex flex-row items-center justify-between w-full mx-4">
-      <Link href="/" className="max-w-10 h-8 hover:scale-110 transition-all duration-200">
-        <span
-          style={{ color: '#1DB954' }}
-          className={myFont.className + ' italic font-bold text-3xl'}
-        >
-          Vee
-        </span>
+    <div className="relative flex flex-row items-center justify-between w-full min-h-16 mx-4">
+      <Link
+        href="/"
+        className="relative min-w-28 min-h-8 hover:scale-110 transition-all -mt-1 duration-200"
+      >
+        <Image src="vee socials.png" alt="VEE Socials" fill />
+
         {/* <svg
           viewBox="0 0 120 120"
           xmlns="http://www.w3.org/2000/svg"
