@@ -3,6 +3,11 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-react';
+import localFont from 'next/font/local';
+
+const myFont = localFont({
+  src: '../../public/LucySaidOk.ttf',
+});
 
 import {
   NavigationMenu,
@@ -35,21 +40,46 @@ const components: { title: string; href: string; description: string }[] = [
     href: '/verification',
     description: 'Get your account verified with our easy verification service',
   },
+  {
+    title: 'Login',
+    href: '/login',
+    description: 'Get your account verified with our easy verification service',
+  },
 ];
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu viewport={false} className=" hidden md:block w-full max-w-full">
-      <NavigationMenuList>
-        {components.map(({ title, href }) => (
-          <NavigationMenuItem key={title}>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href={href}>{title}</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
+    <div className="relative flex flex-row items-center justify-between w-full mx-4">
+      <Link href="/" className="max-w-10 h-8 hover:scale-110 transition-all duration-200">
+        <span
+          style={{ color: '#1DB954' }}
+          className={myFont.className + ' italic font-bold text-3xl'}
+        >
+          Vee
+        </span>
+        {/* <svg
+          viewBox="0 0 120 120"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ width: '100%', height: 'auto' }}
+        >
+          <circle cx="60" cy="60" r="54" fill="#1C1C1E" />
+          <path d="M40 50 L60 70 L80 50" stroke="#1DB954" strokeWidth="6" fill="none" />
+          <circle cx="60" cy="60" r="5" fill="#1DB954" />
+        </svg> */}
+      </Link>
+      <NavigationMenu viewport={false} className=" hidden md:block w-full max-w-full m-2">
+        <NavigationMenuList>
+          {components.map(({ title, href }) => (
+            <NavigationMenuItem key={title}>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link href={href}>{title}</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
   );
 }
 
