@@ -50,10 +50,10 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="relative flex flex-row items-center justify-between w-full min-h-16 mx-4">
+    <div className="relative flex flex-row items-center justify-between w-full min-h-14 px-4">
       <Link
         href="/"
-        className="relative h-9 w-32 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
+        className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
         <Image
           className="h-full w-auto"
@@ -73,12 +73,14 @@ export function NavigationMenuDemo() {
           <circle cx="60" cy="60" r="5" fill="#1DB954" />
         </svg> */}
       </Link>
-      <NavigationMenu viewport={false} className=" hidden md:block w-full max-w-full m-2">
+      <NavigationMenu viewport={false} className=" hidden md:flex max-w-full">
         <NavigationMenuList>
           {components.map(({ title, href }) => (
             <NavigationMenuItem key={title}>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href={href}>{title}</Link>
+                <Link href={href} className="flex flex-wrap wrap-normal !w-auto">
+                  {title}
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
