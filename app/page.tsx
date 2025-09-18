@@ -14,8 +14,8 @@ export default function Home() {
   const [showSignup, setShowSignup] = useState(false);
   return (
     <main className="relative font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      {/* <Image src="bg.jpg" alt="Background" fill className="absolute inset-0 -z-20 object-cover" /> */}
-      {/* <div className="h-full w-full inset-0 absolute bg-gradient-to-b from-background to-transparent -z-10" /> */}
+      <Image src="bg.jpg" alt="Background" fill className="absolute inset-0 -z-20 object-cover" />
+      <div className="h-full w-full inset-0 absolute bg-[#1DB954]/30  -z-10" />
       <div className="flex flex-col gap-[32px] row-start-2 items-center justify-center">
         <h2 className="text-lg text-center sm:text-left">Looking for reliable services?</h2>
         <h1 className="font-bold text-5xl">
