@@ -53,10 +53,15 @@ export function NavigationMenuDemo() {
     <div className="relative flex flex-row items-center justify-between w-full min-h-16 mx-4">
       <Link
         href="/"
-        className="relative min-w-28 min-h-8 hover:scale-110 transition-all -mt-1 duration-200"
+        className="relative h-9 w-32 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
-        <Image src="vee socials.png" alt="VEE Socials" fill />
-
+        <Image
+          className="h-full w-auto"
+          src="veesocials logo.png"
+          alt="VEE Socials"
+          height={10}
+          width={25}
+        />
         {/* <svg
           viewBox="0 0 120 120"
           xmlns="http://www.w3.org/2000/svg"
