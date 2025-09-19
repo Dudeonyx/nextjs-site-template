@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import logo from '@/public/veesocials logo.png';
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-react';
 import localFont from 'next/font/local';
 
@@ -55,13 +56,7 @@ export function NavigationMenuDemo() {
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
-        <Image
-          className="h-full w-auto"
-          src="veesocials logo.png"
-          alt="VEE Socials"
-          height={10}
-          width={25}
-        />
+        <Image className="h-full w-auto" src={logo} alt="VEE Socials" height={10} width={25} />
         {/* <svg
           viewBox="0 0 120 120"
           xmlns="http://www.w3.org/2000/svg"
