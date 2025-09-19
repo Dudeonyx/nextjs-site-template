@@ -56,7 +56,14 @@ export function NavigationMenuDemo() {
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
-        <Image className="h-full w-auto" src={logo} alt="VEE Socials" height={10} width={25} />
+        <Image
+          className="h-full w-auto"
+          src={logo}
+          alt="VEE Socials"
+          unoptimized
+          height={10}
+          width={25}
+        />
         {/* <svg
           viewBox="0 0 120 120"
           xmlns="http://www.w3.org/2000/svg"
