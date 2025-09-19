@@ -48,7 +48,7 @@ const components: { title: string; href: string; description: string }[] = [
     description: 'Get your account verified with our easy verification service',
   },
 ];
-
+//
 export function NavigationMenuDemo() {
   return (
     <div className="relative flex flex-row items-center justify-between w-full min-h-14 px-4">
