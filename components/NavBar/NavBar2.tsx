@@ -23,9 +23,9 @@ import Image from 'next/image';
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: 'Foreign Numbers',
+    title: 'SMS Verification',
     href: '/sims',
-    description: 'Purchase foreign sims for business use',
+    description: 'Get a phone number to verify your account',
   },
   {
     title: 'Boost Follower Count',
