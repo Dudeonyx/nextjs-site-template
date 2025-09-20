@@ -5,7 +5,7 @@ import bg from '@/public/bg.jpg';
 import { useState } from 'react';
 import localFont from 'next/font/local';
 import { Button } from '@/components/ui/button';
-import testImage from '@/public/undraw_social-dashboard_81sv.svg';
+import testImage from '@/public/undraw_social-dashboard.svg';
 
 const myFont = localFont({
   src: '../public/LucySaidOk.ttf',
@@ -22,10 +22,7 @@ export default function Home() {
           <h1 className="font-bold text-4xl lg:text-5xl text-center md:text-left text-[#1DB954]">
             Boost your Socials
           </h1>
-          <h2
-            className="text-xl md:text-2xl text-left sm:text-left 
-          "
-          >
+          <h2 className="text-xl md:text-2xl  text-justify md:text-left">
             Verify your accounts, achieve the next level with a healthy boost to your likes
             followers, comments and views
           </h2>
@@ -36,7 +33,7 @@ export default function Home() {
             Your one-stop digital shop
           </h2>
           <Button
-            className="bg-[#1DB954] text-3xl p-8 hover:bg-[#0E3B24] mt-5"
+            className="bg-[#1DB954] text-xl md:text-3xl p-6 md:p-8 hover:bg-[#0E3B24] mt-5"
             onClick={() => setShowSignup(!showSignup)}
           >
             Get Started

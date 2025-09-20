@@ -20,8 +20,9 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
+import { Button } from '../ui/button';
 
-const components: { title: string; href: string; description: string }[] = [
+const components: { title: string; href: string; description: string; asBtn?: boolean }[] = [
   {
     title: 'SMS Verification',
     href: '/sims',
@@ -38,15 +39,16 @@ const components: { title: string; href: string; description: string }[] = [
     description: 'Increase your likes significantly',
   },
   {
-    title: 'Get Verified',
-    href: '/verification',
-    description: 'Get your account verified with our easy verification service',
+    title: 'Premade accounts',
+    href: '/accounts',
+    description: 'Why start from scratch? Get a premade account today',
   },
-  {
-    title: 'Login',
-    href: '/login',
-    description: 'Get your account verified with our easy verification service',
-  },
+  // {
+  //   title: 'Login',
+  //   href: '/login',
+  //   description: 'Get your account verified with our easy verification service',
+  //   asBtn: true,
+  // },
 ];
 //
 export function NavigationMenuDemo() {
@@ -77,7 +79,7 @@ export function NavigationMenuDemo() {
       </Link>
       <NavigationMenu viewport={false} className=" hidden md:flex max-w-full">
         <NavigationMenuList>
-          {components.map(({ title, href }) => (
+          {components.map(({ title, href, asBtn }) => (
             <NavigationMenuItem key={title}>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                 <Link href={href} className="flex flex-wrap wrap-normal !w-auto">
@@ -88,6 +90,11 @@ export function NavigationMenuDemo() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
+      <Button type="button" className="bg-[#1DB954] text-white" size="lg">
+        <Link href="/login" className="flex flex-wrap wrap-normal !w-auto">
+          Login
+        </Link>
+      </Button>
     </header>
   );
 }
