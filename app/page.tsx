@@ -49,7 +49,17 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="h-[640px] w-full bg-brand-primary"></section>
+      <section className="h-[80vh] w-full bg-brand-primary flex-col flex items-stretch justify-center">
+        <div>
+          <h2>What we offer</h2>
+        </div>
+        <div>
+          <div>SMS Verification</div>
+          <div>Account Verification</div>
+          <div>Boost Accounts</div>
+          <div>Pre-built accounts</div>
+        </div>
+      </section>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
     </main>
   );

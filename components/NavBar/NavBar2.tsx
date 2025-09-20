@@ -25,21 +25,21 @@ import { Button } from '../ui/button';
 const components: { title: string; href: string; description: string; asBtn?: boolean }[] = [
   {
     title: 'SMS Verification',
-    href: '/sims',
+    href: '/sms',
     description: 'Get a phone number to verify your account',
   },
   {
-    title: 'Boost Follower Count',
-    href: '/followers',
+    title: 'Boost Accounts',
+    href: '/boost',
     description: 'Increase your follow count with one of our booster packs',
   },
   {
-    title: 'Boost likes and reactions',
-    href: '/likes',
+    title: 'Account Verification',
+    href: '/verification',
     description: 'Increase your likes significantly',
   },
   {
-    title: 'Premade accounts',
+    title: 'Pre-built accounts',
     href: '/accounts',
     description: 'Why start from scratch? Get a premade account today',
   },
