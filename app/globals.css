@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,9 +41,24 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-cloud: var(--brand-cloud);
+  --color-brand-pop: var(--brand-pop);
 }
 
 :root {
+  --brand-primary: #1db954;
+  --brand-secondary: #191414;
+  --brand-dark: #0e3b24;
+  --brand-mint: #a7efc1;
+  --brand-ink: #222222;
+  --brand-cloud: #f5f5f5;
+  --brand-pop: #ffd447;
+
+  --brand-secondary: #191414;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
