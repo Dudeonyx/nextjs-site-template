@@ -1,4 +1,5 @@
-import * as React from 'react';
+'use client';
+import { useContext } from 'react';
 import Link from 'next/link';
 import logo from '@/public/veesocials logo.png';
 import darkLogo from '@/public/veesocials logo dark.png';
@@ -20,6 +21,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { DarkModeContext } from '@/components/DarkMode/DarkModeContext';
 
 const components: { title: string; href: string; description: string; asBtn?: boolean }[] = [
   {
@@ -50,14 +52,11 @@ const components: { title: string; href: string; description: string; asBtn?: bo
   // },
 ];
 //
-export default function NavigationMenuDemo({ darkMode }: { darkMode?: boolean }) {
+export default function NavigationMenuDemo() {
   // const [darkMode, setDarkMode] = React.useState(true);
+  const darkMode = useContext(DarkModeContext);
   return (
-    <header
-      className={`${
-        !darkMode || 'dark'
-      } dark:bg-brand-dark relative flex flex-row items-center justify-between w-full min-h-14 px-4`}
-    >
+    <header className="dark:bg-brand-dark relative flex flex-row items-center justify-between w-full min-h-14 px-4">
       <Link
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
