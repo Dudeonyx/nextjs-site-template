@@ -51,7 +51,7 @@ const components: { title: string; href: string; description: string }[] = [
 //
 export function NavigationMenuDemo() {
   return (
-    <div className="relative flex flex-row items-center justify-between w-full min-h-14 px-4">
+    <header className="relative flex flex-row items-center justify-between w-full min-h-14 px-4">
       <Link
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
@@ -61,8 +61,8 @@ export function NavigationMenuDemo() {
           src={logo}
           alt="VEE Socials"
           unoptimized
-          height={10}
-          width={25}
+          height={100}
+          width={250}
         />
         {/* <svg
           viewBox="0 0 120 120"
@@ -88,7 +88,7 @@ export function NavigationMenuDemo() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-    </div>
+    </header>
   );
 }
 
