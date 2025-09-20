@@ -22,7 +22,7 @@ export default function Home() {
           <h1 className="font-bold text-4xl lg:text-5xl text-center md:text-left text-[#1DB954]">
             Boost your Socials
           </h1>
-          <h2 className="text-xl md:text-2xl  text-justify md:text-left">
+          <h2 className="text-xl md:text-2xl  text-center md:text-left">
             Verify your accounts, achieve the next level with a healthy boost to your likes
             followers, comments and views
           </h2>
