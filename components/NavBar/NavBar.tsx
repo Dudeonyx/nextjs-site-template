@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NavigationMenuDemo } from './NavBar2';
+import NavigationMenuDemo from './NavBar2';
 
 export default function NavBar({ sample }: { sample?: boolean }) {
   return sample ? (

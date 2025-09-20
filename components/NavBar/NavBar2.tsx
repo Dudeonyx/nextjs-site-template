@@ -1,8 +1,7 @@
-'use client';
-
 import * as React from 'react';
 import Link from 'next/link';
 import logo from '@/public/veesocials logo.png';
+import darkLogo from '@/public/veesocials logo dark.png';
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-react';
 import localFont from 'next/font/local';
 
@@ -20,7 +19,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 
 const components: { title: string; href: string; description: string; asBtn?: boolean }[] = [
   {
@@ -51,16 +50,21 @@ const components: { title: string; href: string; description: string; asBtn?: bo
   // },
 ];
 //
-export function NavigationMenuDemo() {
+export default function NavigationMenuDemo({ darkMode }: { darkMode?: boolean }) {
+  // const [darkMode, setDarkMode] = React.useState(true);
   return (
-    <header className="relative flex flex-row items-center justify-between w-full min-h-14 px-4">
+    <header
+      className={`${
+        !darkMode || 'dark'
+      } dark:bg-brand-dark relative flex flex-row items-center justify-between w-full min-h-14 px-4`}
+    >
       <Link
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
         <Image
           className="h-full w-auto"
-          src={logo}
+          src={darkMode ? darkLogo : logo}
           alt="VEE Socials"
           unoptimized
           height={100}
@@ -81,7 +85,12 @@ export function NavigationMenuDemo() {
         <NavigationMenuList>
           {components.map(({ title, href, asBtn }) => (
             <NavigationMenuItem key={title}>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink
+                asChild
+                className={
+                  navigationMenuTriggerStyle() + ' dark:bg-brand-dark dark:text-brand-cloud'
+                }
+              >
                 <Link href={href} className="flex flex-wrap wrap-normal !w-auto">
                   {title}
                 </Link>
@@ -90,7 +99,7 @@ export function NavigationMenuDemo() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <Button type="button" className="bg-[#1DB954] text-white" size="lg">
+      <Button type="button" className="bg-brand-primary text-white" size="lg">
         <Link href="/login" className="flex flex-wrap wrap-normal !w-auto">
           Login
         </Link>
