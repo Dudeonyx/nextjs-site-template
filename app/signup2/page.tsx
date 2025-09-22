@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useCallback } from 'react';
 
 const signupSchema = z.object({
   username: z.string().min(1, 'Username is required'),
@@ -23,10 +24,13 @@ export default function SignupPage() {
     resolver: zodResolver(signupSchema),
   });
 
-  const onSubmit = async (data: SignupFormInputs) => {
-    // TODO: Implement signup logic
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  };
+  const onSubmit = useCallback(
+    () => async (data: SignupFormInputs) => {
+      // TODO: Implement signup logic
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    },
+    [],
+  );
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
