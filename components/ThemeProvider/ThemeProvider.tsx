@@ -4,11 +4,12 @@ import { ThemeProvider as NextThemeProvider, ThemeProviderProps, useTheme } from
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { useEffect, useState } from 'react';
 import { useClient } from '@/lib/clientUtils';
+import dynamic from 'next/dynamic';
 
-export function TabsDemo() {
+function TabsDemo() {
   const { theme, setTheme } = useTheme();
-  const isMounted = useClient();
-  if (!isMounted) return null;
+  // const isMounted = useClient();
+  // if (!isMounted) return null;
 
   return (
     <div className="flex w-fit max-w-sm flex-col gap-6 fixed bottom-4 right-4 z-20">
@@ -28,10 +29,12 @@ export function TabsDemo() {
   );
 }
 
+export const DynamicTabsDemo = dynamic(() => Promise.resolve(TabsDemo), { ssr: false });
+
 export default function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemeProvider {...props}>
-      <TabsDemo />
+      <DynamicTabsDemo />
       {children}
     </NextThemeProvider>
   );
