@@ -13,7 +13,7 @@ export function HeroSection() {
       {/* <Image src={bg} alt="Background" fill className="absolute inset-0 -z-20 object-cover" /> */}
       {/* <div className="h-full w-full inset-0 absolute bg-[#1DB954]/30 backdrop-blur-xs -z-10" /> */}
       <div className="dark:text-brand-cloud text-brand-primary flex flex-col items-center md:items-start justify-center w-full md:w-full sm:min-h-[320px] md:min-h-[400px] gap-2 py-4">
-        <h1 className="font-bold text-4xl lg:text-5xl text-center md:text-left ">
+        <h1 className="font-extrabold text-4xl lg:text-5xl text-center md:text-left ">
           Boost your Socials
         </h1>
         <h2 className="text-xl md:text-2xl  text-center md:text-left">
