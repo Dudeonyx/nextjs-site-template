@@ -48,6 +48,7 @@
   --color-brand-ink: var(--brand-ink);
   --color-brand-cloud: var(--brand-cloud);
   --color-brand-pop: var(--brand-pop);
+  --color-brand-secondary: var(--brand-secondary);
 }
 
 :root {
@@ -59,7 +60,7 @@
   --brand-cloud: #f5f5f5;
   --brand-pop: #ffd447;
 
-  --brand-secondary: #191414;
+  /* --brand-secondary: #191414; */
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

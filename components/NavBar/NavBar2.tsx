@@ -21,7 +21,9 @@ import {
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { DarkModeContext } from '@/components/DarkMode/DarkModeContext';
+// import { DarkModeContext } from '@/components/DarkMode/DarkModeContext';
+import { useTheme } from 'next-themes';
+import { useClient } from '@/lib/clientUtils';
 
 const components: { title: string; href: string; description: string; asBtn?: boolean }[] = [
   {
@@ -54,21 +56,25 @@ const components: { title: string; href: string; description: string; asBtn?: bo
 //
 export default function NavigationMenuDemo() {
   // const [darkMode, setDarkMode] = React.useState(true);
-  const darkMode = useContext(DarkModeContext);
+  const { theme } = useTheme();
+  const isMounted = useClient();
+  // if (!isMounted) return null;
   return (
     <header className="dark:bg-brand-dark relative flex flex-row items-center justify-between w-full min-h-14 px-4">
       <Link
         href="/"
         className="relative h-9 min-w-24 flex-0 hover:scale-105 text-muted-foreground text-2xl font-bold transition-all duration-200"
       >
-        <Image
-          className="h-full w-auto"
-          src={darkMode ? darkLogo : logo}
-          alt="VEE Socials"
-          unoptimized
-          height={100}
-          width={250}
-        />
+        {isMounted && (
+          <Image
+            className="h-full w-auto"
+            src={theme === 'dark' ? darkLogo : logo}
+            alt="VEE Socials"
+            unoptimized
+            height={100}
+            width={250}
+          />
+        )}
         {/* <svg
           viewBox="0 0 120 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +104,11 @@ export default function NavigationMenuDemo() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <Button type="button" className="bg-brand-primary text-white" size="lg">
+      <Button
+        type="button"
+        className="bg-brand-primary hover:bg-brand-mint hover:text-black text-white"
+        size="lg"
+      >
         <Link href="/login" className="flex flex-wrap wrap-normal !w-auto">
           Login
         </Link>

@@ -1,25 +1,43 @@
 'use client';
 
-import { useState, createContext, useEffect, useLayoutEffect } from 'react';
+import {
+  useState,
+  createContext,
+  useEffect,
+  useLayoutEffect,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { Button } from '@/components/ui/button';
 import NavBar from '../NavBar/NavBar2';
 
 export const DarkModeContext = createContext<boolean>(false);
+
+export const SetDarkModeContext = createContext<Dispatch<SetStateAction<boolean>>>(() => {});
+
+// const darkModeFromStorage =
+//   (typeof window !== 'undefined' && localStorage?.darkMode === 'true') ||
+//   (!localStorage?.darkMode && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
 export default function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
   useLayoutEffect(() => {
-    const darkModeFromStorage =
-      typeof window !== 'undefined' ? localStorage.getItem('darkMode') === 'true' : false;
+    const darkModeFromStorage = localStorage.darkMode === 'true'; // ||
+    // (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
     if (darkMode !== darkModeFromStorage) {
+      document.documentElement.classList.add('dark');
       setDarkMode(darkModeFromStorage);
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem('darkMode', darkMode.toString());
+    localStorage.darkMode = darkMode.toString();
+    document.documentElement.classList.remove(!darkMode ? 'dark' : '');
+    darkMode || document.documentElement.classList.add('dark');
   }, [darkMode]);
   return (
     <DarkModeContext value={darkMode}>
-      <div className={darkMode ? 'dark' : ''}>
+      <SetDarkModeContext value={setDarkMode}>
+        {/* <div className={darkMode ? 'dark' : ''}> */}
         <Button
           type="button"
           onClick={() => setDarkMode(!darkMode)}
@@ -30,7 +48,8 @@ export default function DarkModeProvider({ children }: { children: React.ReactNo
           {darkMode ? 'Light Mode' : 'Dark Mode'}
         </Button>
         {children}
-      </div>
+        {/* </div> */}
+      </SetDarkModeContext>
     </DarkModeContext>
   );
 }
