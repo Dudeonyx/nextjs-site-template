@@ -1,8 +1,8 @@
-'use client';
+// 'use client';
 import { Signup } from '@/components/sign-up/Signup';
 import Image from 'next/image';
 import bg from '@/public/bg.jpg';
-import { useState } from 'react';
+// import { useState } from 'react';
 import localFont from 'next/font/local';
 import NavBar from '@/components/NavBar/NavBar2';
 import { HeroSection } from '@/components/Sections/HeroSection';

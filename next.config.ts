@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
 
   output: 'standalone',
   basePath: process.env.PAGES_BASE_PATH,
+  logging: {
+    fetches: {
+      hmrRefreshes: true,
+      fullUrl: true,
+    },
+  },
   // images: { unoptimized: true },
 };
 export default nextConfig;

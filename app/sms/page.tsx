@@ -1,5 +1,31 @@
+// 'use client';
+// import { use } from 'react';
+import { MySelect } from '@/components/Select/Select';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import react from 'react';
+import { Input } from '@/components/ui/input';
+import {
+  // Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import dynamic from 'next/dynamic';
+// import Selectb from 'react-select';
+// import {  } from '@radix-ui/react-select';
+// import react from 'react';
+
+// const Select = dynamic(() => Promise.resolve(MySelect), { ssr: false, loading: () => <div /> });
+
+type GetATextPriceResponse = {
+  service_name: string;
+  api_name: string;
+  price: string;
+  multiple_sms: boolean;
+  ttl: number;
+};
 
 const simCountries = ['UK', 'US', 'Canada', 'Australia', 'France'] as const;
 
@@ -70,24 +96,56 @@ const dummyData: MainData = {
   Australia: [{ id: 2, maskedPhoneNo: '562-767-4535' }],
 };
 
-export default function SimsPage() {
+export default async function SimsPage() {
+  const response = await fetch('http://localhost:3000' + '/api/get-text');
+  const prices = (await response.json())?.message?.prices as GetATextPriceResponse[];
+  // const filteredPrices = prices.filter()
+  const filteredPrices = Object.values(
+    prices.reduce((acc, item) => {
+      const key = item.api_name;
+      const currentPrice = parseFloat(item.price);
+
+      if (!acc[key] || currentPrice > parseFloat(acc[key].price)) {
+        acc[key] = {
+          ...item,
+          value: item.api_name,
+          label: `${item.service_name} -- NGN ${(
+            Math.round((parseFloat(item.price) * 1600 + 2000) / 10) * 10
+          ).toLocaleString('en-US')}`,
+        };
+      }
+      // acc.ttl.ttl
+      return acc;
+    }, {} as { [x: string]: GetATextPriceResponse & { value: string; label: string } }),
+  );
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold mb-8">Available foreign numbers</h1>
-      {simCountries.map((country) => (
-        <div className="mb-12 w-full flex flex-row flex-wrap items-center gap-2" key={country}>
-          {dummyData[country].map(({ id, maskedPhoneNo }) => (
-            <Card className="w-full max-w-sm" key={country + id}>
-              <CardHeader>
-                <CardTitle>{country}</CardTitle>
-                <CardDescription>{maskedPhoneNo}</CardDescription>
-              </CardHeader>
-              <CardContent>{countryCodes[country] + ' ' + maskedPhoneNo}</CardContent>
-            </Card>
-          ))}
-          ,
-        </div>
-      ))}
+    <div className="min-h-[80vh] flex flex-col items-center justify-center p-8 dark:text-brand-primary bg-brand-cloud dark:bg-brand-dark text-brand-primary">
+      <h1 className="text-4xl font-bold mb-8">Select your service</h1>
+      <MySelect options={filteredPrices} />
+      {/* <Select>
+        <SelectTrigger className="w-[360px]">
+          <SelectValue placeholder="Select a service to verify" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Services</SelectLabel>
+            {/* <Input className="sticky"></Input> /}
+            {filteredPrices.map(({ service_name, price, api_name }) => {
+              try {
+                return (
+                  <SelectItem key={api_name} value={api_name}>{`${service_name} -- N ${(
+                    parseFloat(price) * 1600 +
+                    2000
+                  ).toLocaleString('en-US')}`}</SelectItem>
+                );
+              } catch (error: any) {
+                console.error(error);
+                return null;
+              }
+            })}
+          </SelectGroup>
+        </SelectContent>
+      </Select> */}
     </div>
   );
 }

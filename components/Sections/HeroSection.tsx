@@ -1,12 +1,13 @@
+'use client';
 import Image from 'next/image';
 // import { Button } from '../ui/button';
 
 import testImage from '@/public/undraw_social-dashboard.svg';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export function HeroSection() {
-  const [showSignup, setShowSignup] = useState(false);
+  // const [showSignup, setShowSignup] = useState(false);
 
   return (
     <section className="dark:bg-brand-dark relative w-full flex flex-col md:flex-row justify-between items-center md:items-stretch min-h-[640px] md:min-h-[80vh] px-6 md:px-12 pt-20 sm:pt-0">
@@ -28,7 +29,7 @@ export function HeroSection() {
         </h2>
         <Button
           className="bg-brand-primary text-xl md:text-3xl p-6 md:p-8 hover:bg-brand-mint hover:text-black text-white mt-6"
-          onClick={() => setShowSignup(!showSignup)}
+          onClick={() => null /* setShowSignup(!showSignup) */}
         >
           Get Started
         </Button>

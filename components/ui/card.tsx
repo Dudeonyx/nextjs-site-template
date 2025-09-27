@@ -2,6 +2,23 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Renders a customizable card component with predefined styles.
+ *
+ * @param className - Additional CSS classes to apply to the card.
+ * @param props - Other props passed to the underlying `div` element.
+ *
+ * @remarks
+ * - The card uses flex layout, rounded corners, border, padding, and shadow.
+ * - The `data-slot="card"` attribute is added for targeting or testing purposes.
+ *
+ * @example
+ * ```tsx
+ * <Card className="my-custom-class">
+ *   <p>Card content</p>
+ * </Card>
+ * ```
+ */
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -15,6 +32,18 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders the header section of a card component.
+ *
+ * @remarks
+ * This component is typically used as a child of a card layout to display header content.
+ * It applies specific grid and spacing styles, and supports additional class names and props.
+ *
+ * @param className - Additional CSS classes to apply to the header container.
+ * @param props - Other props to spread onto the header container.
+ *
+ * @returns A div element styled as a card header.
+ */
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
