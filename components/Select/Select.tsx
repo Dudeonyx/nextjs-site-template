@@ -12,21 +12,26 @@ export const MySelect = ({ options }: any) => {
     <Select
       placeholder="Select a service..."
       unstyled
-      className="w-96"
+      className="w-96 text-brand-ink "
       classNames={{
         control: ({ isFocused }) =>
           `rounded-md border bg-white px-3 py-2 text-sm shadow-sm dark:bg-brand-cloud
                transition-colors
-               ${isFocused ? 'border-brand-mint ring-1 ring-blue-500' : 'border-gray-300'}
+               ${isFocused ? 'border-brand-mint ring-1 ring-brand-primary' : 'border-gray-300'}
                `,
         valueContainer: () => 'flex gap-1',
         placeholder: () => 'dark:text-brand-dark text-brand-primary dark:bg-brand-cloud',
         singleValue: () => 'text-gray-700',
-        menu: () =>
-          'mt-1 rounded-md border border-gray-200 dark:bg-brand-dark/90 shadow-lg text-sm',
+        menu: () => 'mt-1 rounded-md border border-gray-200 dark:bg-brand-dark shadow-lg text-sm',
         option: ({ isFocused, isSelected }) =>
-          `px-3 py-2 cursor-pointer
-               ${isSelected ? 'bg-blue-500 text-white' : isFocused ? 'bg-gray-100' : ''}
+          `px-3 py-2 cursor-pointer text-brand-ink dark:text-brand-cloud 
+               ${
+                 isSelected
+                   ? 'bg-brand-primary dark:bg-brand-cloud/90 font-bold !text-brand-cloud dark:!text-brand-ink'
+                   : isFocused
+                   ? 'bg-brand-mint dark:bg-brand-cloud/30 dark:text-brand-cloud'
+                   : ''
+               }
                `,
       }}
       components={{
